@@ -19,11 +19,19 @@ public class HelloServlet extends HttpServlet {
 
         //request.getParameter("");
 
+        Student student = new Student("gela", "gelashvili");
+
+        Gson gson = new Gson();
+        String studentString = gson.toJson(student);
+
+        Student s = gson.fromJson(studentString, Student.class);
+
         // Hello
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
         out.println("<h1>" + message + "</h1>");
         out.println("</body></html>");
+        out.println(studentString);
     }
 
     @Override
